@@ -144,18 +144,17 @@ void loop() {
     }
   }
 
+  // if position is in the middle portion, set the position to the middle of the image
   if (pos < 220 && pos > 100) {
     pos = 160;
   }
-
-  Serial.println("color position");
-  Serial.println(pos);
 
   esp_camera_fb_return(fb);
   free(rgb);     // rgb data
   delay(500);
 }
 
+// Convert RGB to HSI
 void RGB2HSI(float r, float g, float b, float &h, float &s, float &i) {
   r = r / 255.0;
   g = g / 255.0;
@@ -185,6 +184,7 @@ void RGB2HSI(float r, float g, float b, float &h, float &s, float &i) {
   }
 }
 
+// Read the position of the ball
 String readCam() {
   return String(pos);
 }

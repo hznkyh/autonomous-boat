@@ -16,26 +16,19 @@
 TFT_eSPI tft = TFT_eSPI();
 
 int MotorL = 25;
-// int L1 = 33;
-// int L2 = 32;
 int MotorR = 26;
-// int R1 = 39;
-// int R2 = 38;
 bool motorStarted = false;
 
-//Cam
 const char* ssid = "camerateam32z";
 const char* password = "per78dym69";
 
 String pos;
 
-//Your IP address or domain name with URL path
 const char* serverNameCam = "http://192.168.4.1/camera";
 
 unsigned long previousMillis = 0;
 const long interval = 1000; 
 
-//Sensor
 int trigPin = 13;
 int echoPin = 12;
 
@@ -58,22 +51,18 @@ void setup() {
   tft.setTextSize(2);
   tft.setTextColor(TFT_WHITE);
 
-  //Motor
+  //Motor setup
   ledcSetup(0, 500, 8);
   ledcAttachPin(MotorL, 0);
 
   ledcSetup(1, 500, 8);
   ledcAttachPin(MotorR, 1);
-  //Sensor
+
+  //Sensor setup
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 
-  // pinMode(L1, OUTPUT); 
-  // pinMode(L2, OUTPUT); 
-  // pinMode(R1, OUTPUT);
-  // pinMode(R2, OUTPUT);
-  
-  //Cam
+  // Connect to Wi-Fi network with SSID and password
   WiFi.begin(ssid, password);
   Serial.println("Connecting");
   while(WiFi.status() != WL_CONNECTED) { 
@@ -91,7 +80,6 @@ void setup() {
 void loop() {
   unsigned long currentMillis = millis();
   if(currentMillis - previousMillis >= interval) {
-    // Clear screen
     getSensor();
     if(WiFi.status()== WL_CONNECTED ){ 
       pos = httpGETRequest(serverNameCam);
@@ -103,6 +91,8 @@ void loop() {
       Serial.println("WiFi Disconnected");
     }
   }
+
+  //Clear screen
   tft.fillScreen(TFT_BLACK);
 
   tft.setCursor(0, 20);
@@ -154,8 +144,7 @@ void loop() {
 
 String httpGETRequest(const char* serverName) {
   WiFiClient client;
-    
-  // Your Domain name with URL path or IP address with path
+
   http.begin(client, serverName);
   
   // Send HTTP POST request
@@ -193,7 +182,6 @@ void getSensor() {
   digitalWrite(trigPin, LOW);
 
   //get the sound wave travel time
-
   traveltime = pulseIn(echoPin, HIGH);
 
   distanceCm = traveltime/2 * SOUND_SPEED;
