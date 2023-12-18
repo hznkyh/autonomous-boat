@@ -118,6 +118,7 @@ void loop() {
     return;
   }
 
+  //Algorithm to find the position of the red ball
   int x,y,val, count, distance, idx;
   pos=-1;
   val=0; /*init*/ 
