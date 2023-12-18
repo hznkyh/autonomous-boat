@@ -1,0 +1,103 @@
+TTGO Getting Started
+--------------------
+T. Braunl, UWA, 2023
+
+
+Links:
+------------------------------------------------------
+Manufacturer
+   http://www.lilygo.cn/prod_view.aspx?TypeId=50062&Id=1400&FId=t3:50062:3
+   https://github.com/Xinyuan-LilyGO/TTGO-T-Display
+Install ESP32
+   https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/
+T-Display first steps
+   https://f6czv.fr/en/first-not-application-of-demo-of-ttgo-t-display
+   https://diyprojects.io/esp32-how-to-use-gpio-digital-io-arduino-code/#.YyrmEy8RpVQ
+CH341SER Driver for Mac
+   https://www.wch.cn/downloads/CH341SER_MAC_ZIP.html
+------------------------------------------------------
+
+
+Installing TTGO
+---------------
+(1) In Arduino App under Preferences / Settings:
+    In field 'Additional Board Manager URLs' enter the following then klick 'OK':
+      https://dl.espressif.com/dl/package_esp32_index.json
+
+(2) Under Tools / Board: xxx / 'Board Manager ...' click on:
+      install 'esp32' board (version 1.0.6 or higher)
+
+(3) Copy library 'TFT_eSPI' into ~/Documents/Arduino/libraries
+    (download from  https://github.com/Xinyuan-LilyGO/TTGO-T-Display )
+
+(4) Install Silicon Labs driver for EPS32 board (Mac/Win/Lin):
+   https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers
+
+(5) In Arduino App:
+    - Select Tools / Board / ESP32 Arduino / ESP32 Dev Module
+    - Select Tools / Port  / /dev/cu.usbserial-...  (or equivalent for Windows)
+
+(6) Load 'factory' example program:  File / Examples / TFT_eSPI / FactoryTest
+
+(7) Compile example program (symbol 'tick').
+    If an error message re. "python" occurs for MacOS 12+ do the following:
+    (a) Edit file: $HOME/Library/Arduino15/packages/esp32/hardware/esp32/1.0.6/platform.txt
+        (may need to replace '1.0.6' with current version number) 
+    (b) In this line:
+          tools.gen_esp32part.cmd=python "{runtime.platform.path}/tools/gen_esp32part.py"
+        add the full system path for "python", i.e.
+          tools.gen_esp32part.cmd=/usr/local/bin/python '{runtime.platform.path}/tools/gen_esp32part.py'
+
+(8) Upload and run program (symbol 'arrow-right') 
+    If there is an upload error then:
+    (a) Install device driver CH34XSER
+        https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html
+    (b) REBOOT your machine
+    (c) Select Port ***serial*** then retry
+
+---------------------------------------------------------------------------------------------
+Read about TFT functions here:
+https://wiki.microduinoinc.com/index.php
+---------------------------------------------------------------------------------------------
+
+
+New program to display your own start image
+-------------------------------------------
+(1) Convert any image to C-bytes sequence for file "bmp.h"
+    http://www.rinkydinkelectronics.com/t_imageconverter565.php
+(2) Adjust image size in 2 locations in C file TTGO-T-Display.ino
+
+(3) See our example program 'demo-REV'
+
+(4) Try other example programs
+    - File / Examples / TFT_eSPI / Sprite / Sprite_TFT_Rainbow 
+    - File / Examples / TFT_eSPI / generic / TFT_Screen_Capture 
+    - File / Examples / TFT_eSPI / generic / drawXBitmap
+    - File / Examples / TFT_eSPI / 320 x 240 / TFT_Meters
+    - File / Examples / TFT_eSPI / 480 x 320 / TFT_Meters
+    - File / Examples / TFT_eSPI / 320 x 240 / Cellular_Automata
+    - File / Examples / TFT_eSPI / 480 x 320 / Demo_3D-cube
+    - File / Examples / TFT_eSPI / 320 x 240 / TFT_Pong
+    - File / Examples / TFT_eSPI / 320 x 240 / TFT_Spiro     
+
+---------------------------------------------------------------------------------------------
+
+
+DISPLAY INFO
+- Display Resolution: 240*RGB (H) *320(V)
+  Frame Memory Size: 240 x 320 x 18-bit = 1,382,400 bits
+- Display Colors (Color Mode)
+  - Full Color: 262K, RGB=(666) max., Idle Mode Off
+  - Color Reduce: 8-color, RGB=(111), Idle Mode On
+- Programmable Pixel Color Format (Color Depth) for Various Display Data input Format
+  - 12-bit/pixel: RGB=(444)
+  - 16-bit/pixel: RGB=(565)
+  - 18-bit/pixel: RGB=(666)
+- Link. https://www.newhavendisplay.com/appnotes/datasheets/LCDs/ST7789V.pdf
+
+PURCHASE INFO
+https://www.banggood.com/LILYGO-TTGO-T-Display-ESP32-CP2104-WiFi-bluetooth-Module-1_14-Inch-LCD-Development-Board-p-1522925.html?rmmds=buy&cur_warehouse=UK
+
+GITHUB
+https://github.com/Xinyuan-LilyGO/TTGO-T-Display
+=============================================================================================
