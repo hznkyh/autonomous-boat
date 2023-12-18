@@ -22,7 +22,7 @@ An embedded system project of building an autonomous boat that tracks a red blob
 ### Software
 The code is written using [Arduino](https://www.arduino.cc/en/software). 
 
-Setup and upload steps are available in [setup.txt](https://github.com/hznkyh/autonomous-boat/setup.txt).
+Setup and upload steps are available in [setup.txt](https://github.com/hznkyh/autonomous-boat/blob/main/setup.txt).
 
 ## Acknowledgment
 - Embedded Robotics by Thomas Bräunl
