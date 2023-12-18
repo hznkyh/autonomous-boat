@@ -20,8 +20,8 @@ const char* password = "per78dym69";
 AsyncWebServer server(80);
 
 int pos;
-int hueR = 15;
-int hueT = 0;
+int hueOffset = 15;
+int hueTarget = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -132,9 +132,9 @@ void loop() {
       float h, s, i;
       RGB2HSI(r, g, b, h, s, i);
       if (h > 0) { 
-        distance = abs((int)h - hueT); /* hue distance */
+        distance = abs((int)h - hueTarget); /* hue distance */
         if (distance > 180) distance = 360 - distance;
-        if (distance < hueR && s > 0.4 && i > 0.1 && i < 0.9) {
+        if (distance < hueOffset && s > 0.4 && i > 0.1 && i < 0.9) {
           count++; 
         }
       }
