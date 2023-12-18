@@ -31,3 +31,4 @@ Setup and upload steps are available in [setup.txt](./setup.txt).
 
 ## Acknowledgment
 - Embedded Robotics by Thomas Bräunl
+- [RGB to HSL](https://www.rapidtables.com/convert/color/rgb-to-hsl.html) conversion by RapidTables
