@@ -29,6 +29,12 @@ The code is written using [Arduino](https://www.arduino.cc/en/software).
 
 Setup and upload steps are available in [setup.txt](./setup.txt).
 
+## Libraries Used
+- [ESPAsyncWebServer](https://github.com/me-no-dev/ESPAsyncWebServer)
+- [TTGO-T-Display](https://github.com/Xinyuan-LilyGO/TTGO-T-Display)
+- [WiFi](https://github.com/arduino-libraries/WiFi)
+- [HttpClient](https://github.com/amcewen/HttpClient)
+
 ## Acknowledgment
 - Embedded Robotics by Thomas Bräunl.
 - [RGB to HSL](https://www.rapidtables.com/convert/color/rgb-to-hsl.html) conversion by RapidTables.
