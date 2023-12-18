@@ -30,5 +30,6 @@ The code is written using [Arduino](https://www.arduino.cc/en/software).
 Setup and upload steps are available in [setup.txt](./setup.txt).
 
 ## Acknowledgment
-- Embedded Robotics by Thomas Bräunl
-- [RGB to HSL](https://www.rapidtables.com/convert/color/rgb-to-hsl.html) conversion by RapidTables
+- Embedded Robotics by Thomas Bräunl.
+- [RGB to HSL](https://www.rapidtables.com/convert/color/rgb-to-hsl.html) conversion by RapidTables.
+- [Tutorial](https://randomnerdtutorials.com/esp32-client-server-wi-fi/) by Random Nerd Tutorials.
